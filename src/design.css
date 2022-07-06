@@ -101,7 +101,7 @@ footer {
 .city-name {
   text-align: left;
   padding-top: 30px;
-  font-size: 48px;
+  font-size: 42px;
   padding-bottom: 0;
   display: flex;
   justify-content: space-between;
@@ -152,18 +152,10 @@ footer {
   position: relative;
   left: -2px;
 }
-/* :hover .fahrenh,
-:hover .cels {
-  color: rgb(163, 146, 141);
-}
-.fahrenh:focus,
-.cels:focus {
-  color: white;
-} */
-
 .active {
   color: white;
   cursor: default;
+  font-weight: bolder;
 }
 
 .active:hover {

@@ -85,7 +85,7 @@ function showLocTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-  iconElement.setAttribute("width", "150px");
+  iconElement.setAttribute("width", "100px");
 
   celsiusTemperature = response.data.main.temp;
 }
