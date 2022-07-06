@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Application</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/design.css" />
+    <script src="https://kit.fontawesome.com/1639590888.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="row">
+          <div class="col-sm-8 left-container">
+            <h1>Weather App Logo</h1>
+           <form class="search-form" id="search-form">
+          <div class="row">
+            <div class="col-6">
+              <input
+                type="search"
+                placeholder="Enter a city"
+                autofocus="on"
+                autocomplete="off"
+                id="city-input"
+                class="form-control shadow-sm"
+              />
+            </div>
+            <div class="col-3">
+              <input
+                type="submit"
+                value="Search"
+                class="form-control btn btn-primary shadow-sm w-100"
+                id="search-button"
+              />
+            </div>
+            <div class="col-3">
+              <button
+                class="btn btn-success w-100"
+                id="current-location-button"
+              >
+                Current
+              </button>
+            </div>
+          </div>
+        </form>
+           <ul class="left-list">
+            <li> 
+              <h1 class="city-name"> <span id="city">Cairo</span> <p class="current-day"> 
+                <span id="actualdegree">1</span> 
+                <span> <a href="#" id="cels"> °C </a>  </span> 
+                <span> <a href="#" id="farhenh">| F</a>  </span>  
+              </p> </h1>
+            </li>
+            <li class="current-date">  <img src="images/storm.png" alt="" width="80px"> <h4 class="current-temp" id="curr-date"> Monday, June 2 02:00 </h4> 
+             <p class="current-weather" id="description">Thunderstorm</p>
+             </li>
+           <div class="weather-box">
+            <li class="weather-details">
+              <h4><i class="fa-solid fa-cloud-showers-heavy"></i>  Feels Like  </h4>
+              <h4 id="feelslike"></h4>
+            </li>
+            <li class="weather-details"> 
+              <h4> <i class="fa-solid fa-droplet"></i> Humidity</h4>
+              <h4 id="humidity"> </h4>
+            </li>
+             <li class="weather-details"> 
+              <h4> <i class="fa-solid fa-wind"></i> Wind</h4>
+              <h4 id="wind"> </h4>
+            </li>
+            </div>
+           </ul>
+          </div>
+          <div class="col-sm-3 right-container">
+            <ul class="right-list">
+              <li class="forecast">
+                <div class="day-info">
+                  <p>Tuesday</p>
+                    <span> 6° </span>
+                    <span class="lower-temp"> 2° </span>
+                </div>
+                <img src="images/cloudy.png" alt="" width="35">
+              </li>
+              <li class="forecast">
+                <div class="day-info">
+                  <p>Wednesday</p>
+                  <span> 3° </span>
+                    <span class="lower-temp"> 0° </span>
+                </div>
+                <img src="images/storm.png" alt="" width="35">
+              </li>
+              <li class="forecast">
+                <div class="day-info">
+                  <p>Thursday</p>
+                  <span> 2° </span>
+                    <span class="lower-temp"> 0° </span>
+                </div>
+                <img src="images/storm.png" alt="" width="35">
+              </li>
+              <li class="forecast">
+                <div class="day-info">
+                  <p>Friday</p>
+                    <span> 12° </span>
+                    <span class="lower-temp"> 3° </span>
+                </div>
+                <img src="images/clouds.png" alt="" width="35">
+              </li>
+              <li class="forecast">
+                <div class="day-info">
+                    <p>Saturday</p>
+                    <span> 15° </span>
+                    <span class="lower-temp"> 8° </span>
+                </div>
+                <img src="images/sun.png" alt="" width="35">
+              </li>
+              <li class="forecast">
+                <div class="day-info">
+                    <p>Sunday</p>
+                   <span> 10° </span>
+                    <span class="lower-temp"> 2° </span>
+                </div>
+                <img src="images/cloudy.png" alt="" width="35">
+              </li>
+            </ul>
+          
+          <br />
+        </div>
+      </div>
+    </div>
+    <footer>
+      Developed by Farrah Younes
+    </footer>
+    <script src="src/scriptjs.js">
+    
+    </script>
+  </body>
+</html>
