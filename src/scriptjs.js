@@ -1,35 +1,4 @@
-// function dateTime(date) {
-//   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-//   let months = [
-//     "Jan",
-//     "Feb",
-//     "Mar",
-//     "Apr",
-//     "May",
-//     "Jun",
-//     "Jul",
-//     "Aug",
-//     "Sep",
-//     "Oct",
-//     "Nov",
-//     "Dec",
-//   ];
-//   let month = months[date.getMonth()];
-//   let day = days[date.getDay()];
-//   let currentDate = date.getDate();
-//   let time = date.getHours();
-//   if (time < 10) time = "0" + time;
-//   let minutes = date.getMinutes();
-//   if (minutes < 10) minutes = "0" + minutes;
-
-//   return `${day}, ${month} ${currentDate} ${time}:${minutes}`;
-// }
-// let dataClock = document.querySelector("#curr-date");
-// let currentTime = new Date();
-// dataClock.innerHTML = dateTime(currentTime);
-function formatDate(timestamp) {
-  let date = new Date(timestamp);
+function dateTime(date) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   let months = [
@@ -56,8 +25,12 @@ function formatDate(timestamp) {
 
   return `${day}, ${month} ${currentDate} ${time}:${minutes}`;
 }
+let dataClock = document.querySelector("#curr-date");
+let currentTime = new Date();
+dataClock.innerHTML = dateTime(currentTime);
 
 function showLocTemp(response) {
+  console.log(response.data);
   let cityChoosen = document.querySelector("#city");
   cityChoosen.innerHTML = `${response.data.name}`;
 
@@ -70,14 +43,11 @@ function showLocTemp(response) {
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = `${response.data.main.humidity}%`;
 
-  let feelsElement = document.querySelector("#feelslike");
-  feelsElement.innerHTML = `${Math.round(response.data.main.feels_like)}°C`;
+  let visibilityElement = document.querySelector("#visibility");
+  visibilityElement.innerHTML = `${response.data.visibility / 1000} km`;
 
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = `${Math.round(response.data.wind.speed)}km/hr`;
-
-  let dateElement = document.querySelector("#curr-date");
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
@@ -85,9 +55,12 @@ function showLocTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-  iconElement.setAttribute("width", "100px");
+  iconElement.setAttribute("width", "50px");
 
   celsiusTemperature = response.data.main.temp;
+
+  let cloudElement = document.querySelector("#cloudiness-percent");
+  cloudElement.innerHTML = `${response.data.clouds.all}%`;
 }
 
 function displayCityTemp(city) {

@@ -4,85 +4,117 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Application</title>
+    <title>Document</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+<link rel="stylesheet" href="src/design.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="src/design.css" />
-    <script src="https://kit.fontawesome.com/1639590888.js" crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/1639590888.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
       <div class="box">
         <div class="row">
           <div class="col-sm-8 left-container">
-            <h1>Weather App Logo</h1>
-           <form class="search-form" id="search-form">
-          <div class="row">
-            <div class="col-6">
-              <input
-                type="search"
-                placeholder="Enter a city"
-                autofocus="on"
-                autocomplete="off"
-                id="city-input"
-                class="form-control shadow-sm"
-              />
-            </div>
-            <div class="col-3">
-              <input
-                type="submit"
-                value="Search"
-                class="form-control btn btn-primary shadow-sm w-100"
-                id="search-button"
-              />
-            </div>
-            <div class="col-3">
-              <button
-                class="btn btn-success w-100"
-                id="current-location-button"
-              >
-                Current
-              </button>
-            </div>
-          </div>
-        </form>
-           <ul class="left-list">
-            <li> 
-              <h1 class="city-name"> <span id="city">Cairo</span> <p class="current-day"> 
+            <h1 class="logo">Weather App Logo</h1>
+            <form class="search-form" id="search-form">
+              <div class="row">
+                <div class="col-6">
+                  <input
+                    type="search"
+                    placeholder="Enter a city"
+                    autofocus="on"
+                    autocomplete="off"
+                    id="city-input"
+                    class="form-control shadow-sm"
+                  />
+                </div>
+                <div class="col-3">
+                  <input
+                    type="submit"
+                    value="Search"
+                    class="form-control btn btn-primary shadow-sm w-100 searchButton"
+                    id="search-button"
+                  />
+                </div>
+                <div class="col-3">
+                  <button
+                    class="btn btn-success w-100"
+                    id="current-location-button"
+                  >
+                    Current
+                  </button>
+                </div>
+              </div>
+            </form>
+            <div class="row">
+              <div class="col-6">
+                <h1 class="city-name"> <span id="city">Cairo</span>
+                <h4 class="current-day" id="curr-date"> Monday, June 2 02:00 </h4>
+                <h5 class="cloud"> Cloud Cover <span id="cloudiness-percent"></span></h5> 
+               
+                </div>
+                
+                <!-- left side temp & date -->
+              <div class="col-6">
+                <!-- current temp -->
+              <h1 class="current-temp"> 
                 <span id="actualdegree">1</span>
                 <span> <a href="" id="cels" class="active">°C</a></span>
-                <span> <a href="" id="farhenh">| F</a></span></p> </h1>
-            </li>
-            <li class="current-date">  <img src="images/storm.png" alt="" width="80px" id="icon"> <h4 class="current-temp" id="curr-date"> Monday, June 2 02:00 </h4> 
-             <p class="current-weather" id="description">Thunderstorm</p>
-             </li>
-           <div class="weather-box">
-            <li class="weather-details">
-              <h4><i class="fa-solid fa-temperature-half"></i>  Feels Like  </h4>
-              <h4 id="feelslike">32°C
-              </h4>
-            </li>
-            <li class="weather-details"> 
-              <h4> <i class="fa-solid fa-droplet"></i> Humidity</h4>
-              <h4 id="humidity"> 20%</h4>
-            </li>
-             <li class="weather-details"> 
-              <h4> <i class="fa-solid fa-wind"></i> Wind</h4>
-              <h4 id="wind"> 10 </h4>
-            </li>
+                <span> <a href="" id="farhenh">| F</a></span></h1>
+              <!-- description of current temp -->
+              <p class="current-weather" id="description">Thunderstorm</p>
+              <div class="thunder"><img src="images/storm.png" alt="" width="50px" id="icon"></div>
+              </div>
             </div>
-           </ul>
+
+              <ul class="secondbox">
+                <li class="weather-detail">
+                 <h4> <i class="fa-solid fa-eye"></i> Visibility </h4> <h4 class="visibility" id="visibility">2km</h4> 
+                </li>
+                <li class="weather-detail"> <h4><i class="fa-solid fa-droplet"></i> Humidity </h4> <h4 class="humidity" id="humidity">30 % </h4></li>
+                <li class="weather-detail"> <h4> <i class="fa-solid fa-wind"></i> Wind </h4> <h4 class="wind" id="wind">3km/hr </h4></li>
+              </ul>
+              </div>
+
+            <!-- humidity.visibility.wind -->
+            <!-- <div class="secondbox">
+            <div class="row">
+                <div class="col-6">
+                   <ul>
+                  <li class="weather-details"><i class="fa-solid fa-eye"></i> Visibility</li>
+                  <li class="weather-details"><i class="fa-solid fa-droplet"></i> Humidity</li>
+                  <li class="weather-details"><i class="fa-solid fa-wind"></i> Wind</li>
+                </ul> 
+            </div>
+          
+            humidity.visibility.wind.numbers -->
+                <!-- <div class="col-6">
+                  <ul>
+                  <li class="weather-detail">1km</li>
+                  <li class="weather-detail">30%</li>
+                  <li class="weather-detail">7km/hr</li>
+                </ul>
+            </div>
           </div>
-          <div class="col-sm-3 right-container">
+          </div> -->
+          
+          
+          <!-- left side forecast -->
+          <div class="col-sm-4">
             <ul class="right-list">
               <li class="forecast">
                 <div class="day-info">
@@ -133,8 +165,7 @@
                 <img src="images/cloudy.png" alt="" width="35">
               </li>
             </ul>
-          
-          <br />
+          </div>
         </div>
       </div>
     </div>
