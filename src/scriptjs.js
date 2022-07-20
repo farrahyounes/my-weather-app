@@ -42,7 +42,7 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<ul class="right-list">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    if (index > 0 && index < 7) {
       forecastHTML =
         forecastHTML +
         ` <li class="forecast">
@@ -53,14 +53,15 @@ function displayForecast(response) {
                       forecastDay.temp.min
                     )}° </span>
                 </div>
-                <img src="http://openweathermap.org/img/wn/${
+                <img src="./images/${
                   forecastDay.weather[0].icon
-                }@2x.png" alt="" width="35">
+                }.gif" alt="" width="40">
               </li>`;
     }
   });
   forecastHTML = forecastHTML + `</ul>`;
   forecastElement.innerHTML = forecastHTML;
+  console.log(response.data);
 }
 function getForecast(coordinates) {
   let apiKey = "04e252e3e98f65a4c18907e95ddf02cb";
@@ -90,7 +91,7 @@ function showLocTemp(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `./images/${response.data.weather[0].icon}.gif`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
   iconElement.setAttribute("width", "50px");
@@ -133,33 +134,11 @@ function getExactLoc(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPlace);
 }
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  let currentTemp = document.querySelector("#actualdegree");
-  currentTemp.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let currentTemp = document.querySelector("#actualdegree");
-  currentTemp.innerHTML = Math.round(celsiusTemperature);
-}
 
 let locationBtn = document.querySelector("#current-location-button");
 locationBtn.addEventListener("click", getExactLoc);
 
 navigator.geolocation.getCurrentPosition(showPlace);
 
-//unit conversion
-let fahrenheitLink = document.querySelector("#farhenh");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-let celsiusLink = document.querySelector("#cels");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
-
-let celsiusTemperature = null;
+//function call
+displayCityTemp("Cairo");

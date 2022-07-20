@@ -63,7 +63,7 @@ body {
   text-align: right;
   text-transform: capitalize;
   position: relative;
-  top: -12px;
+  top: 3px;
   left: -10px;
 }
 .current-day {
@@ -78,23 +78,17 @@ body {
   text-align: left;
 }
 .thunder {
-  /* text-align: right; */
   position: relative;
-  top: -18px;
-  right: -100px;
+  top: 1px;
+  right: 10px;
 }
 
-#farhenh,
 #cels {
   text-decoration: none;
   font-size: 20px;
   position: relative;
   top: -14px;
   left: -10px;
-}
-#farhenh {
-  position: relative;
-  left: -15px;
 }
 
 ul {
@@ -148,6 +142,7 @@ footer {
   padding: 0;
   opacity: 0.7;
   font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
 }
 
 #search-button {
@@ -170,4 +165,8 @@ footer {
   border-color: rgba(12, 19, 66, 0.3);
   cursor: pointer;
   background-color: rgba(140, 149, 206, 0.3);
+}
+
+.lower-temp {
+  opacity: 0.5;
 }
