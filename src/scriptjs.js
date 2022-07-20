@@ -29,8 +29,46 @@ let dataClock = document.querySelector("#curr-date");
 let currentTime = new Date();
 dataClock.innerHTML = dateTime(currentTime);
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<ul class="right-list">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        ` <li class="forecast">
+                <div class="day-info">
+                  <p>${formatDay(forecastDay.dt)}</p>
+                    <span> ${Math.round(forecastDay.temp.max)}° </span>
+                    <span class="lower-temp"> ${Math.round(
+                      forecastDay.temp.min
+                    )}° </span>
+                </div>
+                <img src="http://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png" alt="" width="35">
+              </li>`;
+    }
+  });
+  forecastHTML = forecastHTML + `</ul>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+function getForecast(coordinates) {
+  let apiKey = "04e252e3e98f65a4c18907e95ddf02cb";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showLocTemp(response) {
-  console.log(response.data);
   let cityChoosen = document.querySelector("#city");
   cityChoosen.innerHTML = `${response.data.name}`;
 
@@ -61,6 +99,8 @@ function showLocTemp(response) {
 
   let cloudElement = document.querySelector("#cloudiness-percent");
   cloudElement.innerHTML = `${response.data.clouds.all}%`;
+
+  getForecast(response.data.coord);
 }
 
 function displayCityTemp(city) {
